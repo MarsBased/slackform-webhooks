@@ -12,7 +12,18 @@ require './app/slack_inviter'
 require './app/typeform_response'
 
 post '/' do
-  params = JSON.parse(request.body.read)
+  payload = request.body.read
+
+  if ENV['TYPEFORM_SECRET']
+    hash = OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'), ENV['TYPEFORM_SECRET'], payload)
+    actual_signature = 'sha256=' + Base64.strict_encode64(hash)
+
+    unless Rack::Utils.secure_compare(actual_signature, request.env['HTTP_TYPEFORM_SIGNATURE'])
+      return halt 500, "Signatures don't match!"
+    end
+  end
+
+  params = JSON.parse(payload)
   event = TypeformResponse.new(params)
 
   if event.response?

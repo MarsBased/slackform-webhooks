@@ -32,7 +32,7 @@ Slackform is configured by using environment variables. In development, it inclu
 - **SLACK_API_KEY:** You can find it in the Slack API page while you are logged in your Slack team. Go to the [Slack Web API page](https://api.slack.com/web) and in the "Authentication" section you will be able to see or create the token for the team. Note that in this page you will see the API tokens for all the Slack teams where you are registered. Just copy the token of the team where you want to invite the new members.
 - **SLACK_TEAM:** This is the name of the Slack team where you want to invite new members. This is just your Slack subdomain. For example, if you access Slack through ```https://coolteam.slack.com```, then the Slack team is ```coolteam```
 - **EMAIL_FIELD_ID, FIRST_NAME_FIELD_ID and LAST_NAME_FIELD_ID:** A Slack invitation consists of 3 parameters: an email (required), a first name (optional) and a last name (optional). This variables are used to specify the Typeform fields that are used to extract each of the parameters. For each invitation parameter you need to specify the Typeform field id that will be used. See [how to check a typeform field id](#how-to-check-a-typeform-field-id) for details.
- 
+- **TYPEFORM_SECRET: (Optional)** The secret configured in the Typeform Webhook.
 ### How to check a Typeform field ID
 
 Follow these steps:
