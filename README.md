@@ -76,3 +76,7 @@ Now you need to configure the integration:
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/MarsBased/slackform.
+
+## Update Lambda function
+
+Just ZIP everything and upload as a ZIP, remember to include all gems in the bundle and install any new gems with `bundle install --path vendor/bundle`.
