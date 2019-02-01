@@ -18,7 +18,7 @@ post '/' do
     hash = OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'), ENV['TYPEFORM_SECRET'], payload)
     actual_signature = 'sha256=' + Base64.strict_encode64(hash)
 
-    unless Rack::Utils.secure_compare(actual_signature, request.env['HTTP_TYPEFORM_SIGNATURE'])
+    unless Rack::Utils.secure_compare(actual_signature, request.env['HTTP_Typeform-Signature'])
       return halt 500, "Signatures don't match!"
     end
   end
