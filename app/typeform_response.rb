@@ -1,4 +1,4 @@
-class TypeformEvent
+class TypeformResponse
 
   def initialize(data)
     @data = data

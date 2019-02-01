@@ -9,11 +9,11 @@ require './app/notifier/default'
 require './app/notifier/slack'
 
 require './app/slack_inviter'
-require './app/typeform_event'
+require './app/typeform_response'
 
 post '/' do
   params = JSON.parse(request.body.read)
-  event = TypeformEvent.new(params)
+  event = TypeformResponse.new(params)
 
   if event.response?
     first_name = event.answer_for_field(ENV['FIRST_NAME_FIELD_ID'])
