@@ -20,13 +20,13 @@ module Notifier
     def notify_successfully_sent_receipt_email(email)
       message = "Receipt email sent to #{email}."
 
-      puts send_message(success_message_payload(message))
+      send_message(success_message_payload(message))
     end
 
     def notify_failed_sending_receipt_email(email, error_message)
       message = "Error while trying to send receipt email to #{email}."
 
-      puts send_message(error_message_payload(message, error_message))
+      send_message(error_message_payload(message, error_message))
     end
 
     private

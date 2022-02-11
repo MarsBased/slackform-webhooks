@@ -11,7 +11,6 @@ class TypeformResponse
   def answer_for_field(id)
     answer = answers.find { |answer| answer['field']['id'] == id }
     return unless answer
-
     return answer.fetch('text') if answer['type'] == 'text'
     return answer.fetch('email') if answer['type'] == 'email'
   end
