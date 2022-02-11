@@ -10,14 +10,14 @@ The Typeform form needs to be configured to add a Webhook pointing to the URL wh
 
 ### Dependencies
 
-* Ruby 2.5.3
-* Git (needed to clone the repo in order to install the gem)
+- Ruby 2.5.3
+- Git (needed to clone the repo in order to install the gem)
 
 ### How to install
 
 Follow these steps to install:
 
-1. Clone this repository: ```git clone https://github.com/MarsBased/slackform```
+1. Clone this repository: `git clone https://github.com/MarsBased/slackform`
 2. Install gems: `bundle install`
 3. Configure environment variables. Use `.env.sample` to see the variables that need to be configured.
 
@@ -30,21 +30,23 @@ Just run `ruby app.rb`. It will start listening on port 4567. If you want to tes
 Slackform is configured by using environment variables. In development, it includes `dotenv` to make it easier to configure, just create a `.env` file with all the variables. These are the variables you need to configure:
 
 - **SLACK_API_KEY:** You can find it in the Slack API page while you are logged in your Slack team. Go to the [Slack Web API page](https://api.slack.com/web) and in the "Authentication" section you will be able to see or create the token for the team. Note that in this page you will see the API tokens for all the Slack teams where you are registered. Just copy the token of the team where you want to invite the new members.
-- **SLACK_TEAM:** This is the name of the Slack team where you want to invite new members. This is just your Slack subdomain. For example, if you access Slack through ```https://coolteam.slack.com```, then the Slack team is ```coolteam```
+- **SLACK_TEAM:** This is the name of the Slack team where you want to invite new members. This is just your Slack subdomain. For example, if you access Slack through `https://coolteam.slack.com`, then the Slack team is `coolteam`
 - **EMAIL_FIELD_ID, FIRST_NAME_FIELD_ID and LAST_NAME_FIELD_ID:** A Slack invitation consists of 3 parameters: an email (required), a first name (optional) and a last name (optional). This variables are used to specify the Typeform fields that are used to extract each of the parameters. For each invitation parameter you need to specify the Typeform field id that will be used. See [how to check a typeform field id](#how-to-check-a-typeform-field-id) for details.
+- **STRIPE_SECRET:** In order to automatically send receipt emails aftter the purchase, a key to Stripe is needed. Retrieve yours from the [Stripe Dashboard](https://dashboard.stripe.com/apikeys). We recommend using restricted keys, whose permissions can be cherry-picked to not allow full access to all Stripe data. In this case, this library only needs read and write access to _charges_.
 - **TYPEFORM_SECRET: (Optional)** The secret configured in the Typeform Webhook.
+
 ### How to check a Typeform field ID
 
 Follow these steps:
 
 1. Open the Form edition page
-![image](https://cloud.githubusercontent.com/assets/3403704/11236413/bb45c554-8dd9-11e5-8f03-9f3dbb611d30.png)
+   ![image](https://cloud.githubusercontent.com/assets/3403704/11236413/bb45c554-8dd9-11e5-8f03-9f3dbb611d30.png)
 
 2. Check the HTML of the field. In Chrome and other browsers you can just "Inspect Element" on the field.
-![image](https://cloud.githubusercontent.com/assets/3403704/11236582/f57f2340-8dda-11e5-8d56-65b039952910.png)
+   ![image](https://cloud.githubusercontent.com/assets/3403704/11236582/f57f2340-8dda-11e5-8d56-65b039952910.png)
 
-3. Find the parent ```<li>``` element for the field and check its ```id``` attribute, it should be something like: ```field-12345678```
-![image](https://cloud.githubusercontent.com/assets/3403704/11236716/b2af6c68-8ddb-11e5-9e50-5782336e8cce.png)
+3. Find the parent `<li>` element for the field and check its `id` attribute, it should be something like: `field-12345678`
+   ![image](https://cloud.githubusercontent.com/assets/3403704/11236716/b2af6c68-8ddb-11e5-9e50-5782336e8cce.png)
 
 4. Finally remove the "field-" part and that's your id. For example, for "field-12345678" it would be "12345678".
 
@@ -62,7 +64,7 @@ To configure notifications, add the following variable:
 
 Follow these steps to configure a new Webhook:
 
-1. Open the Slack administration panel for the team where you want notifications to be posted. For example: ```https://coolteam.slack.com/admin```
+1. Open the Slack administration panel for the team where you want notifications to be posted. For example: `https://coolteam.slack.com/admin`
 2. In the side menu go to "Integrations"
 3. Click "View" on "Incoming WebHooks"
 
