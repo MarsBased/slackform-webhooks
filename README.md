@@ -10,7 +10,7 @@ The Typeform form needs to be configured to add a Webhook pointing to the URL wh
 
 ### Dependencies
 
-- Ruby 2.5.3
+- Ruby 2.7.2
 - Git (needed to clone the repo in order to install the gem)
 
 ### How to install
