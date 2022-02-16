@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.5.3'
+ruby '2.7.2'
 
 gem 'sinatra'
 gem 'dotenv'
@@ -7,3 +7,4 @@ gem 'httparty'
 gem 'rack'
 gem 'rack-contrib'
 gem 'json'
+gem 'stripe'

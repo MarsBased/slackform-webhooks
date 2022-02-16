@@ -1,6 +1,7 @@
+require 'dotenv/load'
 require 'sinatra'
 require 'httparty'
-require 'dotenv/load'
+require 'stripe'
 
 require './app/api_gateway/base'
 require './app/api_gateway/slack'
@@ -8,6 +9,7 @@ require './app/api_gateway/slack'
 require './app/notifier/default'
 require './app/notifier/slack'
 
+require './app/receipt_email_sender'
 require './app/slack_inviter'
 require './app/typeform_response'
 
@@ -32,5 +34,6 @@ post '/' do
     email = event.answer_for_field(ENV['EMAIL_FIELD_ID'])
 
     SlackInviter.new.invite(first_name, last_name, email)
+    ReceiptEmailSender.new(event.form_id, event.response_token, email).send_email
   end
 end
