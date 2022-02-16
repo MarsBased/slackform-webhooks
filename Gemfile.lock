@@ -11,7 +11,7 @@ GEM
     mime-types-data (3.2018.0812)
     multi_xml (0.6.0)
     mustermann (1.0.3)
-    rack (2.0.6)
+    rack (2.1.4)
     rack-contrib (2.1.0)
       rack (~> 2.0)
     rack-protection (2.0.5)
