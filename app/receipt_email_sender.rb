@@ -28,7 +28,9 @@ class ReceiptEmailSender
   end
 
   def update_charge(charge_id)
-    stripe_api.update(charge_id, receipt_email: @email)
+    stripe_api.update(charge_id,
+                      receipt_email: @email,
+                      description: "Membership - Startups BCN Community on Slack")
   end
 
   def handle_success
